@@ -1,0 +1,178 @@
+body {
+  height 100%;
+  margin: 0;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+h1 {
+    font-family: "Rationale", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 6vw;
+    color: #CD5C5C;
+}
+
+h2 {
+    font-family: quantico;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2vw;
+    color: #C6E4B4;
+}
+
+p{
+    font-family: "Rationale", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3.5vw;
+    color: white
+}
+
+
+.topnav {
+  overflow: hidden;
+    background-color: black;
+    height: 4vw;
+}
+
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 1vw 2vw 1vw;
+  text-decoration: none;
+  font-size: 1.4vw;
+  font-family: rationale;
+}
+
+.topnav a:hover {
+  color: orange;
+}
+
+.topnav a.active {
+  color: #CD5C5C;
+}
+
+#logo{
+    padding-left: 1vw;
+    width: 15vw;
+}
+
+.fire-img{
+    max-width: 100%;
+    height: auto;
+}
+
+#yt{
+    padding-top: 0.5vw;
+    padding-bottom: 2vw;
+
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+  font-size: 9vw;
+  font-family: quantico;
+  background-color: black;
+  padding: 0vw;
+}
+
+/* Centered text */
+ .centered {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+ }
+
+.home-button {
+  background-color: #d39a1d;
+  border: none;
+  color: white;
+  padding: 1vw 2vw;
+  text-align: center;
+  font-size: 3vw;
+  font-family: quantico
+  opacity: 1;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.home-button:hover {
+    background-color: #841623;
+}
+
+.booking-center{
+  margin: auto;
+  width: 50%;
+  border: 1px solid white;
+  padding: 14vw;
+  background-color:black;
+  text-align:center;
+}
+
+.booking-button{
+  background-color: #221F1F;
+  border: none;
+  color: #EA663E;
+  padding: 4vw 4vw;
+  text-align: center;
+  font-size: 3vw;
+  font-family: quantico;
+  opacity: 1;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.booking-button:hover {
+    color: blue;
+}
+
+.contact-message {
+    height:20vw;
+    width:50vw;
+    font-size:2vw;
+    font-family: "Ariel", sans-serif;
+    background-color: #0C0C0C;
+    color:white;
+}
+
+.contact-form{
+    width:35vw;
+    padding:1vw;
+    font-family: "Ariel", sans-serif;
+    font-size:2vw;
+    background-color: #0C0C0C;
+    color:white;
+}
+
+label{
+    font-size:3vw;
+    font-family: "Rationale", sans-serif;
+    padding:0.5vw;
+}
+
+.normal{
+    background-color: black;
+}
+
+.footer{
+    border: 10vw;
+    border-color: red;
+    background-color: #221F1F;
+}
+
+.socials{
+     display: inline-flex; /* aligns images */
+     justify-content: center; /* centers the logos*/
+}
