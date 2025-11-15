@@ -1,3 +1,14 @@
+# Database details
+Host: sql8.freesqldatabase.com
+Database name: sql8807974
+Database user: sql8807974
+Database password: HkHxHIDR42
+Port number: 3306
+
+u can use phpmyadmin to edit db if u want
+
+
+
 # Node.js Express template
 
 This is a Node.js Express project with an HTTP server.
