@@ -1,66 +1,125 @@
 <DOCTYPE html>
-    <html>
+  <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Rationale&display=swap" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>New Table Reservation</title>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Rationale&display=swap"
+        rel="stylesheet"
+      />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>New Table Reservation</title>
     </head>
-    <body >
-    <div class="topnav" >
-        <img id="logo" src="logo.png">
+    <body>
+      <div class="topnav">
+        <img id="logo" src="logo.png" />
         <a href="contact.html">Contact</a>
         <a href="booking.html">Booking</a>
         <a href="Menu.html">Cafe-Menu</a>
         <a class="active" href="index.html">Home</a>
-    </div>
+      </div>
 
-    <br>
-    <h1 style="text-align: center; font-size: 9vw; ">New Table Reservation</h1>
-        <div style="padding:5vw; background-color:#0C0C0C; border:0.4vw solid; border-color:grey;">
-            <form class="contact-form"  >
-                <label for="fname">Full name:</label><br>
-                    <input class="contact-form" type="text" id="fname" name="fname" required ><br>
-                <label for="size">Party Size:</label><br>
-                    <input class="contact-form" type="number" id="size" name="size" min = "1" max="6" required> <br>
-                <label for="date">Date of your reservation :</label><br>
-                    <input class="contact-form" type="date" id="date" name="date" required><br>
-                <label for="time">Time of your reservation :</label><br>
-                    <select name="time" id="time">
-                        <option>15:00</option>
-                        <option>16:00</option>
-                        <option>17:00</option>
-                        <option>18:00</option>
-                        <option>19:00</option>
-                        <option>20:00</option>
-                        <option>21:00</option>
-                        <option>22:00</option>
-                    </select> <br>
-                <label style for="contactNum">Your Contact number:</label><br>
-                    <input class="contact-form" type="tel" id="contactNum" name="contactNum" required><br>
-                <label style for="email" >Enter your email:</label><br>
-                    <input class="contact-form" type="email" id="email" name="email" required><br>
-                <label for="additionalInfo">If you have additional information for our staff, please enter it below:</label><br>
-                    <textarea required class="reserv-message" id="additionalInfo" > </textarea> <br><br>
-                <input class="reserv-button" style="padding: 2vw 8vw; " type="submit" value="Submit">
-            </form>
-        </div>
+      <br />
+      <h1 style="text-align: center; font-size: 9vw">New Table Reservation</h1>
+      <div
+        style="
+          padding: 5vw;
+          background-color: #0c0c0c;
+          border: 0.4vw solid;
+          border-color: grey;
+        "
+      >
+        <form class="contact-form">
+          <label for="fname">Full name:</label><br />
+          <input
+            class="contact-form"
+            type="text"
+            id="fname"
+            name="fname"
+            required
+          /><br />
+          <label for="size">Party Size:</label><br />
+          <input
+            class="contact-form"
+            type="number"
+            id="size"
+            name="size"
+            min="1"
+            max="6"
+            required
+          />
+          <br />
+          <label for="date">Date & time of your reservation :</label><br />
+          <input
+            class="contact-form"
+            type="datetime-local"
+            id="date"
+            name="date"
+            required
+          /><br />
+          <br />
+          <label style for="contactNum">Your Contact number:</label><br />
+          <input
+            class="contact-form"
+            type="tel"
+            id="contactNum"
+            name="contactNum"
+            required
+          /><br />
+          <label style for="email">Enter your email:</label><br />
+          <input
+            class="contact-form"
+            type="email"
+            id="email"
+            name="email"
+            required
+          /><br />
+          <label for="additionalInfo"
+            >If you have additional information for our staff, please enter it
+            below:</label
+          ><br />
+          <textarea required class="reserv-message" id="additionalInfo">
+          </textarea>
+          <br /><br />
+          <input
+            class="reserv-button"
+            style="padding: 2vw 8vw"
+            type="submit"
+            value="Submit"
+          />
+        </form>
+      </div>
 
-    <div class="footer" style="text-align: center;">
+      <div class="footer" style="text-align: center">
         <h2>FOLLOW US ON SOCIAL MEDIA!</h2>
         <div class="socials">
-            <a href="https://www.tiktok.com" style="text-decoration: none" target="_blank" ><img src="tiktok.png" width="30%"> </a>
-            <a href="http://www.youtube.com" style="text-decoration: none" target="_blank" ><img id="yt" src="yt.png" width=46vw> </a>
-            <a href="https://instagram.com"  style="text-decoration: none" target="_blank" ><img src="insta.png" width="30%"> </a>
+          <a
+            href="https://www.tiktok.com"
+            style="text-decoration: none"
+            target="_blank"
+            ><img src="tiktok.png" width="30%" />
+          </a>
+          <a
+            href="http://www.youtube.com"
+            style="text-decoration: none"
+            target="_blank"
+            ><img id="yt" src="yt.png" width="46vw" />
+          </a>
+          <a
+            href="https://instagram.com"
+            style="text-decoration: none"
+            target="_blank"
+            ><img src="insta.png" width="30%" />
+          </a>
         </div>
-    </div>
+      </div>
 
-    <script>
-        document.getElementById("date").min = new Date().toISOString().split("T")[0];
-    </script>
-
+      <script>
+        document.getElementById("date").min = new Date()
+          .toISOString()
+          .split("T")[0];
+      </script>
     </body>
-    </html>
+  </html>
 </DOCTYPE>

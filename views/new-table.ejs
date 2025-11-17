@@ -2,7 +2,7 @@
 <br />
 <h1 style="text-align: center; font-size: 9vw">New Table Reservation</h1>
 <div style="padding: 5vw; background-color: #0c0c0c; border: 0.4vw solid grey">
-  <form action="/dao.js/" method="POST" class="contact-form">
+  <form class="contact-form">
     <label for="fname">Full name:</label><br />
     <input
       class="contact-form"
@@ -22,26 +22,15 @@
       required
     />
     <br />
-    <label for="date">Date of your reservation :</label><br />
+    <label for="date">Date & time of your reservation :</label><br />
     <input
       class="contact-form"
-      type="date"
+      type="datetime-local"
       id="date"
       name="date"
       min="<%= new Date().toISOString().split('T')[0] %>"
       required
     /><br />
-    <label for="time">Time of your reservation :</label><br />
-    <select name="time" id="time">
-      <option>15:00</option>
-      <option>16:00</option>
-      <option>17:00</option>
-      <option>18:00</option>
-      <option>19:00</option>
-      <option>20:00</option>
-      <option>21:00</option>
-      <option>22:00</option>
-    </select>
     <br />
     <label style for="contactNum">Your Contact number:</label><br />
     <input
