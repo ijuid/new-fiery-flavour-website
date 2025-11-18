@@ -1,4 +1,11 @@
 # Database details
+use this link to view db
+
+https://www.phpmyadmin.co/index.php
+
+
+use this info to sign in
+
 Host: sql8.freesqldatabase.com
 
 Database name: sql8807974
@@ -9,7 +16,6 @@ Database password: HkHxHIDR42
 
 Port number: 3306
 
-u can use phpmyadmin to edit db if u want
 
 
 
