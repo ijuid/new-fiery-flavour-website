@@ -1,7 +1,16 @@
 const express = require("express");
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const port = 3000;
 const mysql = require("mysql");
+const http = require("http");
+
+const server = http.createServer(function (req, res){
+    res.writeHead(200, { 'Content-Type': 'text/plain' }); // Set the response HTTP header with HTTP status and Content type
+    res.end('Hello, World!\n'); // Send the response body as 'Hello, World!'
+});
 
 const pool = mysql.createPool({
     connectionLimit: 100,
@@ -39,13 +48,13 @@ pool.getConnection(function(err, con){
     })
 })
 
-app.post("/", function (req, res,) {
-    console.log(req.fname);
-    console.log(req.size);
-    console.log(req.date);
-    console.log(req.time);
-    console.log(req.contactNum);
-    console.log(req.email);
+app.post("/register", (req, res) => {
+       console.log(req.body.fname);
+//    console.log(req.body.size);
+  //  console.log(req.body.date);
+    //console.log(req.body.time);
+   // console.log(req.body.contactNum);
+    console.log(req.body.email);
     pool.getConnection(function (err, con) {
         if (err) throw err;
         console.log("Connected");
