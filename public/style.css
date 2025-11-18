@@ -1,5 +1,5 @@
 body {
-  height 100%;
+  height: 100%;
   margin: 0;
   background-color: black;
   display: flex;
@@ -98,7 +98,7 @@ p{
   padding: 1vw 2vw;
   text-align: center;
   font-size: 3vw;
-  font-family: quantico
+  font-family: quantico;
   opacity: 1;
   transition: 0.3s;
   display: inline-block;
@@ -203,7 +203,7 @@ label{
 }
 .menu{
   background-color: #221F1F; 
-  padding: 8vm; 
+  padding: 8vw;
   border-radius: 10vw; 
   width: 700px; 
 }

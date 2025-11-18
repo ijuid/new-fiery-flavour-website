@@ -49,14 +49,10 @@ pool.getConnection(function(err, con){
 })
 
 app.post("/register", (req, res) => {
-    console.log(req.body.fname);
-    console.log(req.body.size);
-    console.log(req.body.date);
-    console.log(req.body.time);
-    console.log(req.body.contactNum);
-    console.log(req.body.email);
     pool.getConnection(function (err, con) {
-        if (err) throw err;
+        if (err) {
+            return res.json("error!")
+        }
         console.log("Connected");
         const sql = "INSERT INTO reservation (name, partySize, bookingDate , bookingTime, phoneNum, Email) VALUES (?)";
         const values = [
@@ -67,10 +63,15 @@ app.post("/register", (req, res) => {
             req.body.contactNum,
             req.body.email
         ]
-        con.query(sql,[values], function (err, result){
+        con.query(sql,[values], function (err, data){
             con.release();
-            if (err) throw err;
-            console.log("1 record inserted!");
+            if (err) {
+               throw err;
+            }
+            else {
+                console.log("1 record inserted!");
+                res.render('confirmed');
+            }
         })
     });
 });
