@@ -1,8 +1,13 @@
 <%- include("header") -%>
 <br />
+
 <h1 style="text-align: center; font-size: 9vw">New Table Reservation</h1>
+
+<!-- main reservation form container -->
 <div style="padding: 5vw; background-color: #0c0c0c; border: 0.4vw solid grey">
-  <form action="/dao.js/" method="POST" class="contact-form">
+  <!-- reservation form -->
+  <form action="/app.js/" method="POST" class="contact-form">
+    <!-- full name input -->
     <label for="fname">Full name:</label><br />
     <input
       class="contact-form"
@@ -11,6 +16,8 @@
       name="fname"
       required
     /><br />
+
+    <!-- party size input (min 1, max 6) -->
     <label for="size">Party Size:</label><br />
     <input
       class="contact-form"
@@ -22,6 +29,8 @@
       required
     />
     <br />
+
+    <!-- date & time input (minimum date set to today using EJS) -->
     <label for="date">Date & time of your reservation :</label><br />
     <input
       class="contact-form"
@@ -31,6 +40,8 @@
       min="<%= new Date().toISOString().split('T')[0] %>"
       required
     /><br />
+
+    <!-- dropdown for selecting time slots -->
     <label for="time">Time of your reservation :</label><br />
     <select name="time" id="time">
       <option>15:00</option>
@@ -43,6 +54,8 @@
       <option>22:00</option>
     </select>
     <br />
+
+    <!-- contact number input -->
     <label style for="contactNum">Your Contact number:</label><br />
     <input
       class="contact-form"
@@ -51,6 +64,8 @@
       name="contactNum"
       required
     /><br />
+
+    <!-- email input -->
     <label style for="email">Enter your email:</label><br />
     <input
       class="contact-form"
@@ -59,6 +74,8 @@
       name="email"
       required
     /><br /><br />
+
+    <!-- submit button -->
     <input
       class="booking-button"
       style="padding: 2vw 8vw"
