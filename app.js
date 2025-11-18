@@ -100,7 +100,10 @@ app.post("/register", (req, res) => {
     con.query(sql, [values], function (err, result) {
       con.release();
       if (err) throw err;
-      console.log("1 record inserted!");
+      else {
+          console.log("1 record inserted!");
+          res.render("confirmed");
+      }
     });
   });
 });

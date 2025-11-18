@@ -6,7 +6,7 @@
 <!-- main reservation form container -->
 <div style="padding: 5vw; background-color: #0c0c0c; border: 0.4vw solid grey">
   <!-- reservation form -->
-  <form action="/app.js/" method="POST" class="contact-form">
+  <form action="/register" method="POST" class="contact-form">
     <!-- full name input -->
     <label for="fname">Full name:</label><br />
     <input
@@ -30,11 +30,11 @@
     />
     <br />
 
-    <!-- date & time input (minimum date set to today using EJS) -->
-    <label for="date">Date & time of your reservation :</label><br />
+    <!-- date input (minimum date set to today using EJS) -->
+    <label for="date">Date of your reservation :</label><br />
     <input
       class="contact-form"
-      type="datetime-local"
+      type="date"
       id="date"
       name="date"
       min="<%= new Date().toISOString().split('T')[0] %>"
