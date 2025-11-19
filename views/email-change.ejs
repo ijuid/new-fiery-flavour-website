@@ -1,2 +1,17 @@
 <%- include("header") -%>
+<div class="container" style="padding: 1vw;">
+    <h1>Change email</h1>
+    <form action = "/change" method="POST">
+        <label style for="oldEmail">Enter your current email:</label>
+            <input class="contact-form" type="email" id="oldEmail" name="oldEmail" required /> <br>
+
+        <label style for="newEmail">Enter your new email:</label>
+            <input class="contact-form" type="email" id="newEmail" name="newEmail" required /> <br>
+
+        <input class="booking-button" style="padding: 2vw 8vw;" type="submit" value="CHANGE EMAIL" />
+    </form>
+</div>
+
+</body>
+</html>
 

@@ -151,6 +151,7 @@ app.post("/sign-in", (req, res) => {
                 return res.json(err);
             }
             con.query(sql2, req.body.email, (err, data) => {
+                con.release();
                 if (err) {
                     return res.json(err);
                 }else if (data.length < 0){
@@ -165,6 +166,29 @@ app.post("/sign-in", (req, res) => {
 
 
 
+app.post("/change", (req, res) => {
+    const sql3 = "UPDATE reservation SET email = ? WHERE email= ?";
+    let arr=[
+        req.body.newEmail,
+        req.body.oldEmail
+    ]
+    pool.getConnection(function (err, con) {
+        if (err) {
+            return res.json(err);
+        }
+        con.query(sql3, arr, (err, data) => {
+            con.release();
+            if (err) {
+                return res.json(err);
+            }else if (data.length < 0){
+                res.render("email-change");
+            } else {
+                res.render("change-successful");
+            }
+        });
+
+    });
+});
 
 
 //route handlers to render pages
@@ -178,6 +202,10 @@ app.get("/new-table", (req, res) => {
 
 app.get("/log-in", (req, res) => {
     res.render("log-in");
+});
+
+app.get("/email-change", (req, res) => {
+    res.render("email-change");
 });
 
 //starts express server
