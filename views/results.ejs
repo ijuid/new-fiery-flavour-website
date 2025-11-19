@@ -1,10 +1,8 @@
 <%- include("header") -%>
-<div class="container" style="padding: 2vw;">
+<div class="container" style="padding: 1vw;">
 <h1>Hello <%= fullName %> </h1>
 <p> Your Booking is at  <%= date %> at <%= time %></p>
-    <form action = "/edit-details" method="POST">
-        <input class="home-button" style="padding: 1vw 3vw" type="submit" value="EDIT DETAILS" />
-    </form>
+    <a href="/email-change" class="home-button">CHANGE EMAIL</a>
     <h2>or</h2>
     <h1>Cancel Reservation </h1>
     <form action = "/delete" method="POST">
