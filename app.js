@@ -153,11 +153,11 @@ app.post("/delete", (req, res) => {
         con.query(sql2, req.body.email, (err, data) => {
             con.release();
             if (err) {
-                return res.json(err);
-            }else if (data.length > 0){
-                res.render("deletion");
-            } else {
                 res.render("invalid-email");
+            }else if(data.affectedRows===0){
+                    res.render("invalid-email");
+            }else {
+                res.render("deletion");
             }
         });
     });
@@ -180,7 +180,7 @@ app.post("/change", (req, res) => {
             con.release();
             if (err) {
                 return res.json(err);
-            }else if (data.length < 0){
+            }else if (data.affectedRows===0){
                 res.render("invalid-email");
             } else {
                 res.render("change-successful");
