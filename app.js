@@ -29,10 +29,10 @@ const server = http.createServer(function (req, res) {
 //creating a mysql connection pool
 const pool = mysql.createPool({
     connectionLimit: 100,
-    host: "sql8.freesqldatabase.com",
-    user: "sql8807974",
-    password: "HkHxHIDR42",
-    database: "sql8807974",
+    host: "localhost",
+    user: "fiery",
+    password: "123",
+    database: "website",
 });
 let out = "";
 
@@ -138,7 +138,8 @@ app.post("/sign-in", (req, res) => {
                 res.render("results", items);
 
             }else{
-                res.render("invalid-email");
+                //res.render("invalid-email");
+              res.render("log-in", {invalid: 'Invalid Email'});
             }
         })
     })

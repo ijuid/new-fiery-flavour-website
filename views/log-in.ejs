@@ -1,5 +1,12 @@
 <%- include("header") -%>
 
+<% if (typeof invalid !== 'undefined' && invalid) { %>
+     <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <%= invalid %>
+     </div> 
+  <% } %>
+
 <div style="padding: 10vw; padding-bottom: 59%">
     <div class="booking-center" style="padding-top: 0vw; text-align: left;">
         <h1 style="color:white; text-align: left;">LOGIN</h1>
@@ -11,8 +18,6 @@
         </form>
     </div>
 </div>
-
-
 
 
 

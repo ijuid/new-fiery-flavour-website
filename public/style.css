@@ -208,5 +208,30 @@ label{
 }
 }
 
+.alert {
+    padding: 1vw;
+    background-color: #f44336;
+    color: white;
+    font-family: "Rationale", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2vw;
+}
+
+.closebtn {
+    margin-left: 5vw;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 3vw;
+    line-height: 2vw;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
 
 
