@@ -1,9 +1,11 @@
 //loads express frameworl
 const express = require("express");
+const session = require('express-session');
 const app = express();
 
 //middleware to parse json and url-encoded form data
 app.use(express.json());
+app.use(session({ secret: 'email123', resave: false, saveUninitialized: true }));
 app.use(express.urlencoded({ extended: true }));
 
 //sets ejs as the template engine
@@ -80,12 +82,7 @@ pool.getConnection(function (err, con) {
 //inserts a reservation into the database
 app.post("/register", (req, res) => {
     //logs incoming form data
-    console.log(req.body.fname);
-    console.log(req.body.size);
-    console.log(req.body.date);
-    console.log(req.body.time);
-    console.log(req.body.contactNum);
-    console.log(req.body.email);
+    console.log("registering...");
 
     //inserting into database
     pool.getConnection(function (err, con) {
@@ -135,6 +132,7 @@ app.post("/sign-in", (req, res) => {
                     date: data[0].bookingDate,
                     time: data[0].bookingTime
                 };
+                req.session.sessOldEmail = items.theEmail
                 res.render("results", items);
 
             }else{
@@ -166,29 +164,33 @@ app.post("/delete", (req, res) => {
 });
 
 
-
 app.post("/change", (req, res) => {
     const sql3 = "UPDATE reservation SET email = ? WHERE email= ?";
     let arr=[
         req.body.newEmail,
         req.body.oldEmail
     ]
-    pool.getConnection(function (err, con) {
-        if (err) {
-            return res.json(err);
-        }
-        con.query(sql3, arr, (err, data) => {
-            con.release();
+    if (req.body.oldEmail !== req.session.sessOldEmail){
+        res.render("email-change", {invalid: 'Invalid Email'});
+    }
+    else {
+        pool.getConnection(function (err, con) {
             if (err) {
                 return res.json(err);
-            }else if (data.affectedRows===0){
-                res.render("invalid-email");
-            } else {
-                res.render("change-successful");
             }
-        });
+            con.query(sql3, arr, (err, data) => {
+                con.release();
+                if (err) {
+                    return res.json(err);
+                } else if (data.affectedRows === 0) {
+                    res.render("email-change", {invalid: 'Invalid Email'});
+                } else {
+                    res.render("change-successful");
+                }
+            });
 
-    });
+        });
+    }
 });
 
 
