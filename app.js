@@ -70,7 +70,7 @@ pool.getConnection(function (err, con) {
     console.log("Connected");
 
     con.query(
-        "CREATE TABLE IF NOT EXISTS reservation (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), partySize TINYINT, bookingDate VARCHAR(10), bookingTime VARCHAR(5), phoneNum VARCHAR(10), email VARCHAR(255) UNIQUE NOT NULL)",
+        "CREATE TABLE IF NOT EXISTS reservation (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), partySize TINYINT, bookingDate VARCHAR(10), bookingTime VARCHAR(5), phoneNum VARCHAR(10), email VARCHAR(255) NOT NULL)",
         (err) => {
             con.release();
             if (err) throw err;
@@ -126,17 +126,29 @@ app.post("/sign-in", (req, res) => {
                 return res.json(err);
             }
             if(data.length > 0){
+                //for loop and concat all the booking dates and times into 1 value!!
+                var fullDate = "";
+                for (let i =0; i<10; i++){
+                   if(data[i] == null){
+                       break;
+                   } else{
+                       let sqlDate = data[i].bookingDate;  // e.g., '2025-12-26'
+                       let parts = sqlDate.split('-');
+                       let formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                       fullDate += (i+1) + ") " + formattedDate + " at " + data[i].bookingTime + '<br>' ;
+                   }
+                }
                 const items = {
                     fullName: data[0].name,
                     theEmail: req.body.email,
                     date: data[0].bookingDate,
-                    time: data[0].bookingTime
+                    time: data[0].bookingTime,
+                    fullDate1: fullDate
                 };
                 req.session.sessOldEmail = items.theEmail
                 res.render("results", items);
 
             }else{
-                //res.render("invalid-email");
               res.render("log-in", {invalid: 'Invalid Email'});
             }
         })
@@ -145,6 +157,10 @@ app.post("/sign-in", (req, res) => {
 
 app.post("/delete", (req, res) => {
     const sql2 = "DELETE FROM reservation WHERE email = ?";
+    //THIS WONT WORK! MUST MAKE NEW VIEWS FILE FOR DELETING, WILL ALLOW CHOOSING EACH RESERVATION
+    //if (req.body.email !== req.session.sessOldEmail){
+      //  res.render("results", {invalid: 'Invalid old email'});
+    //}
     pool.getConnection(function (err, con) {
         if (err) {
             return res.json(err);
