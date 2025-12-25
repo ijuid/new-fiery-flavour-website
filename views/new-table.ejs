@@ -1,4 +1,12 @@
 <%- include("header") -%>
+
+<% if (typeof invalid !== 'undefined' && invalid) { %>
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <%= invalid %>
+    </div>
+<% } %>
+
 <br />
 
 <h1 style="text-align: center; font-size: 9vw">New Table Reservation</h1>

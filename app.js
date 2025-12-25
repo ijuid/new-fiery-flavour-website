@@ -89,10 +89,27 @@ app.post("/register", (req, res) => {
         if (err) throw err;
         console.log("Connected");
 
-        const sql =
+        const selector =
+            "SELECT * FROM reservation WHERE bookingDate= ? AND bookingTime = ? AND email = ?  "
+
+        const checkValues = [
+            req.body.date,
+            req.body.time,
+            req.body.email,
+        ];
+
+        con.query(selector, checkValues, function (err, data) { //checks if person has already booked the time
+            if (err) throw err;
+            if(data.length > 0){
+                res.render("new-table", {invalid: 'Slot already booked'});
+                //TODO: NEED TO BLOCK AFTER THIS
+            }
+        });
+
+        const sqlAdder =
             "INSERT INTO reservation (name, partySize, bookingDate , bookingTime, phoneNum, email) VALUES (?)";
 
-        const values = [
+        const mainValues = [
             req.body.fname,
             req.body.size,
             req.body.date,
@@ -102,7 +119,7 @@ app.post("/register", (req, res) => {
         ];
 
         //execute insert query
-        con.query(sql, [values], function (err, result) {
+        con.query(sqlAdder, [mainValues], function (err, result) {
             con.release();
             if (err) throw err;
             else {
@@ -128,14 +145,14 @@ app.post("/sign-in", (req, res) => {
             if(data.length > 0){
                 //for loop and concat all the booking dates and times into 1 value!!
                 var fullDate = "";
-                for (let i =0; i<10; i++){
+                for (let i =0; i<data.length; i++){
                    if(data[i] == null){
                        break;
                    } else{
                        let sqlDate = data[i].bookingDate;  // e.g., '2025-12-26'
                        let parts = sqlDate.split('-');
                        let formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
-                       fullDate += (i+1) + ") " + formattedDate + " at " + data[i].bookingTime + '<br>' ;
+                       fullDate += (i+1) + ") " + formattedDate + " at " + data[i].bookingTime + " with a party size of: " + data[i].partySize +'<br>' ;
                    }
                 }
                 const items = {
