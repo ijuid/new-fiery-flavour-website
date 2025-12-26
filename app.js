@@ -81,51 +81,31 @@ pool.getConnection(function (err, con) {
 
 //inserts a reservation into the database
 app.post("/register", (req, res) => {
-    //logs incoming form data
     console.log("registering...");
-
     //inserting into database
     pool.getConnection(function (err, con) {
         if (err) throw err;
         console.log("Connected");
 
-        const selector =
-            "SELECT * FROM reservation WHERE bookingDate= ? AND bookingTime = ? AND email = ?  "
-
-        const checkValues = [
-            req.body.date,
-            req.body.time,
-            req.body.email,
-        ];
+        const selector = "SELECT * FROM reservation WHERE bookingDate= ? AND bookingTime = ? AND email = ?  "
+        const checkValues = [req.body.date, req.body.time, req.body.email];
 
         con.query(selector, checkValues, function (err, data) { //checks if person has already booked the time
             if (err) throw err;
             if(data.length > 0){
-                res.render("new-table", {invalid: 'Slot already booked'});
-                //TODO: NEED TO BLOCK AFTER THIS
+                return res.render("new-table", {invalid: 'Slot already booked'});
             }
-        });
+            const sqlAdder = "INSERT INTO reservation (name, partySize, bookingDate , bookingTime, phoneNum, email) VALUES (?)";
+            const mainValues = [req.body.fname, req.body.size, req.body.date, req.body.time, req.body.contactNum, req.body.email];
 
-        const sqlAdder =
-            "INSERT INTO reservation (name, partySize, bookingDate , bookingTime, phoneNum, email) VALUES (?)";
-
-        const mainValues = [
-            req.body.fname,
-            req.body.size,
-            req.body.date,
-            req.body.time,
-            req.body.contactNum,
-            req.body.email,
-        ];
-
-        //execute insert query
-        con.query(sqlAdder, [mainValues], function (err, result) {
-            con.release();
-            if (err) throw err;
-            else {
-                console.log("1 record inserted!");
-                res.render("confirmed");
-            }
+            con.query(sqlAdder, [mainValues], function (err, result) { // putting this inside the 1st con.query makes it synchronous
+                con.release();
+                if (err) throw err;
+                else {
+                    console.log("1 record inserted!");
+                    res.render("confirmed");
+                }
+            });
         });
     });
 });
