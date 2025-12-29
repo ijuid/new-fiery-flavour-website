@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Rationale&display=swap"rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+<script>
+    var b = false;
+
+    function closeNav() {
+        document.getElementById("sideMenu")
+            .style.width = "0";
+        document.getElementById("contentArea")
+            .style.marginLeft = "0";
+    }
+
+    function openNav() {
+        if (!b) {
+            document.getElementById("sideMenu")
+                .style.width = "300px";
+            document.getElementById("contentArea")
+                .style.marginLeft = "300px";
+            b = true;
+        } else {
+            closeNav();
+            b = false;
+        }
+    }
+
+    function showContent(content) {
+        document.getElementById("contentTitle")
+            .textContent = content + " page";
+
+        closeNav();
+    }
+</script>
+
+<div id="sideMenu" class="sideMenu">
+    <div class="mainMenu">
+        <img img id="sidebar-logo" src=logo.png>
+        <hr>
+        <a href="/results" style="color:#CD5C5C">View Details</a>
+        <hr>
+        <a href="/email-change">Change Details</a>
+        <hr>
+        <a href="/manage-bookings">Manage Bookings</a>
+        <hr>
+    </div>
+</div>
+
+<div id="contentArea">
+        <br>
+		<span style="font-size: 3vh; cursor: pointer; color: #CD5C5C; padding: 1vw; margin-top: 50px; "
+              onclick="openNav()"> ☰</span>
+    <hr style="color: #CD5C5C;">

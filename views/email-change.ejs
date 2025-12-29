@@ -1,21 +1,21 @@
-<%- include("header") -%>
+<%- include("sidebar") -%>
 <% if (typeof invalid !== 'undefined' && invalid) { %>
      <div class="alert">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         <%= invalid %>
      </div> 
   <% } %>
-<div class="container" style="padding: 1vw;">
-    <h1>Change email</h1>
+<div class="container" style=" ">
+    <h1>Change Personal Details</h1>
     <form action = "/change" method="POST">
-        <label style for="oldEmail">Enter your current email:</label>
+        <p style="margin: 18px 0 4px 0; padding: 0;"> Enter your current email: </p>
             <input class="contact-form" type="email" id="oldEmail" name="oldEmail" required /> <br>
-
-        <label style for="newEmail">Enter your new email:</label>
+        <p style="margin: 22px 0 4px 0; padding: 0;"> Enter your new email: </p>
             <input class="contact-form" type="email" id="newEmail" name="newEmail" required /> <br>
 
         <input class="booking-button" style="padding: 2vw 8vw;" type="submit" value="CHANGE EMAIL" />
     </form>
+</div>
 </div>
 
 </body>

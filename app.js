@@ -220,8 +220,16 @@ app.get("/log-in", (req, res) => {
     res.render("log-in");
 });
 
+app.get("/results", (req, res) => {
+    res.render("results");
+});
+
 app.get("/email-change", (req, res) => {
     res.render("email-change");
+});
+
+app.get("/manage-bookings", (req, res) => {
+    res.render("manage-bookings");
 });
 
 //starts express server
