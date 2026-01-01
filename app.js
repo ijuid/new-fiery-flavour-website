@@ -135,18 +135,18 @@ app.post("/sign-in", (req, res) => {
                        fullDate += (i+1) + ") " + formattedDate + " at " + data[i].bookingTime + " with a party size of: " + data[i].partySize +'<br>' ;
                    }
                 }
-                const items = {
+                req.session.userData = {
                     fullName: data[0].name,
                     theEmail: req.body.email,
                     date: data[0].bookingDate,
                     time: data[0].bookingTime,
                     fullDate1: fullDate
                 };
-                req.session.sessOldEmail = items.theEmail
-                res.render("results", items);
+                req.session.sessOldEmail = req.body.email
+                return res.redirect("/results");
 
             }else{
-              res.render("log-in", {invalid: 'Invalid Email'});
+               res.render("log-in", {invalid: 'Invalid Email'});
             }
         })
     })
@@ -221,7 +221,19 @@ app.get("/log-in", (req, res) => {
 });
 
 app.get("/results", (req, res) => {
-    res.render("results");
+    if (!req.session.userData){
+        return res.render("log-in");
+    }
+    const userData = req.session.userData;
+    const items = {
+        fullName: userData.fullName,
+        theEmail: userData.theEmail,
+        date: userData.date,
+        time: userData.time,
+        fullDate1: userData.fullDate1
+    }
+
+    res.render("results", items)
 });
 
 app.get("/email-change", (req, res) => {

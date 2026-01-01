@@ -18,7 +18,6 @@
             .style.marginLeft = "0";
     }
 
-
     function openNav() {
         if (!b) {
             document.getElementById("sideMenu")
@@ -35,7 +34,6 @@
     function showContent(content) {
         document.getElementById("contentTitle")
             .textContent = content + " page";
-
         openNav();
     }
 </script>
@@ -43,7 +41,7 @@
 <div id="sideMenu" class="sideMenu">
     <div class="mainMenu">
         <img img id="sidebar-logo" src=logo.png>
-        <hr>
+        <hr style="color: #EA663E">
         <a href="/results" style="color:#CD5C5C">View Details</a>
         <hr>
         <a href="/email-change">Change Details</a>
@@ -54,7 +52,9 @@
 </div>
 
 <div id="contentArea">
+    <div style="background-color: #0f0e0e">
         <br>
 		<span style="font-size: 3vh; cursor: pointer; color: #CD5C5C; padding: 1vw; margin-top: 50px; "
               onclick="openNav()"> ☰</span>
-    <hr style="color: #CD5C5C;">
+    <hr style="color: #EA663E">
+    </div>
