@@ -1,13 +1,12 @@
 body {
-  height: 100%;
-  margin: 0;
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    height: 100%;
+    margin: 0;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
     padding: 0;
 }
-
 
 h1 {
     font-family: "Rationale", sans-serif;
@@ -64,6 +63,11 @@ p{
 }
 
 .fire-img{
+    max-width: 100%;
+    height: auto;
+}
+
+.flame-img{
     max-width: 100%;
     height: auto;
 }
@@ -149,12 +153,33 @@ p{
 }
 
 .contact-form{
-    width:35vw;
+    width:30vw;
     padding:1vw;
     font-family: "Ariel", sans-serif;
-    font-size:2vw;
+    font-size:1.5vw;
     background-color: #0C0C0C;
     color:white;
+}
+
+.table-form{
+    width:30vw;
+    padding:1vw;
+    font-family: "Ariel", sans-serif;
+    font-size:1.5vw;
+    background-color: black;
+    color:white;
+}
+.table {
+    padding: 1vw;
+    background-color: black;
+    border: 0.4vw solid grey;
+    width: 49%;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+    border-radius: 1vw;
 }
 
 label{
@@ -165,11 +190,10 @@ label{
 
 .normal{
     background-color: black;
+    padding: 0 4vw 0 4vw;
 }
 
 .footer{
-    border: 10vw;
-    border-color: red;
     background-color: #221F1F;
 }
 
