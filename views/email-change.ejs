@@ -5,17 +5,44 @@
         <%= invalid %>
      </div> 
   <% } %>
-<div class="container" style=" ">
-    <h1>Change Personal Details</h1>
-    <form action = "/change" method="POST">
-        <p style="margin: 18px 0 4px 0; padding: 0;"> Enter your current email: </p>
-            <input class="contact-form" type="email" id="oldEmail" name="oldEmail" required /> <br>
-        <p style="margin: 22px 0 4px 0; padding: 0;"> Enter your new email: </p>
-            <input class="contact-form" type="email" id="newEmail" name="newEmail" required /> <br>
-
-        <input class="booking-button" style="padding: 2vw 8vw;" type="submit" value="CHANGE EMAIL" />
-    </form>
+<div style="margin: 10px">
+<h1 style="text-align: center; font-size: 5vw; margin: 0;">Change Personal Details</h1>
 </div>
+<hr style="color: #CF8E8E; margin: 0">
+
+<div class="flex-container">
+    <div class="flex-child">
+        <h3>Change Name</h3>
+        <div style="justify-content: center; align-content: center; display: flex">
+            <form action = "/name" method="POST" class="table-form">
+                <label for="fname"> Full Name: </label>
+                <input class="contact-form" type="text" id="fname" name="fname" value="<%= fullName %>" required />
+                <br><br>
+                <input class="edit-button" type="submit" value="CHANGE NAME" />
+            </form>
+        </div>
+    </div>
+
+    <div class="flex-child">
+        <h3>Change Email</h3>
+        <div style="justify-content: center; align-content: center; display: flex">
+            <form action = "/change" method="POST" class="table-form">
+                <label for="oldEmail"> Current Email: </label>
+                <input class="contact-form" type="email" id="oldEmail" name="oldEmail" value="<%= theEmail %>" disabled />
+                <br><br>
+                <label for="newEmail"> New Email: </label>
+                <input class="contact-form" type="email" id="newEmail" name="newEmail" required /> <br>
+
+                <br><br>
+                <input class="edit-button" type="submit" value="CHANGE EMAIL" />
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
 </div>
 
 </body>

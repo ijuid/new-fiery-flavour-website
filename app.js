@@ -237,7 +237,15 @@ app.get("/results", (req, res) => {
 });
 
 app.get("/email-change", (req, res) => {
-    res.render("email-change");
+    const userData = req.session.userData;
+    const items = {
+        fullName: userData.fullName,
+        theEmail: userData.theEmail,
+        date: userData.date,
+        time: userData.time,
+        fullDate1: userData.fullDate1
+    }
+    res.render("email-change", items);
 });
 
 app.get("/manage-bookings", (req, res) => {

@@ -24,6 +24,15 @@ h2 {
     color: #EA663E;
 }
 
+h3 {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #F5A4CF;
+    text-decoration: underline;
+    font-size: 3.5vw;
+}
+
 p{
     font-family: "Rationale", sans-serif;
     font-weight: 400;
@@ -142,6 +151,26 @@ p{
 .booking-button:hover {
     color: green;
 }
+
+.edit-button{
+    background-color: #221F1F;
+    border: none;
+    color:#CF8E8E;
+    padding: 2vw 5vw;
+    text-align: center;
+    font-size: 3vw;
+    font-family: quantico;
+    opacity: 1;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    color: green;
+}
+
 
 .contact-message {
     height:20vw;
@@ -295,6 +324,9 @@ div.content {
     height: 5vw;
 }
 
+#contentArea {
+    transition: margin-left 0.3s;
+}
 
 .sideMenu {
     height: 100%;
@@ -329,4 +361,19 @@ div.content {
     width: 26vh;
     padding-bottom: 3vw;
     margin-left: 0.5vh;
+}
+
+/* side by side divs*/
+.flex-container {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.flex-child {
+    flex: 1;
+    height: 50rem;
+    text-align: center;
+}
+.flex-child:first-child {
+    margin-right: 1px;
 }
