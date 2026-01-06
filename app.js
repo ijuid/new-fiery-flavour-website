@@ -223,7 +223,6 @@ function dataCollector(userData) {
 }
 
 
-
 //route handlers to render pages
 app.get("/", (req, res) => {
     res.render("index");

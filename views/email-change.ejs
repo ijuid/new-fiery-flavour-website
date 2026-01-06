@@ -6,7 +6,7 @@
      </div> 
   <% } %>
 <div style="margin: 10px">
-<h1 style="text-align: center; font-size: 5vw; margin: 0;">Change Personal Details</h1>
+<h1 style="text-align: center; font-size: 6vh; margin: 0;">Edit Reservations</h1>
 </div>
 <hr style="color: #CF8E8E; margin: 0">
 
@@ -18,9 +18,11 @@
                 <label for="fname"> Full Name: </label>
                 <input class="contact-form" type="text" id="fname" name="fname" value="<%= fullName %>" required />
                 <br><br>
-                <input class="edit-button" type="submit" value="CHANGE NAME" />
+                <input class="edit-button" style="margin-bottom: 10vw" type="submit" value="CHANGE NAME" />
             </form>
+            <hr class="hidden-hr">
         </div>
+
     </div>
 
     <div class="flex-child">
@@ -32,13 +34,36 @@
                 <br><br>
                 <label for="newEmail"> New Email: </label>
                 <input class="contact-form" type="email" id="newEmail" name="newEmail" required /> <br>
-
                 <br><br>
                 <input class="edit-button" type="submit" value="CHANGE EMAIL" />
             </form>
         </div>
     </div>
 
+</div>
+
+<br>
+<hr style="margin: 0;">
+
+<div style="text-align: center">
+    <h3>Cancel Reservations</h3>
+
+    <form action = "/delete" method="POST" class="cancel-form">
+        <% for (i=0;i<date.length; i++){%>
+            <% let sqlDate = date[i]; %>
+            <% let parts = sqlDate.split('-'); %>
+            <% let formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`; %>
+
+            <label for="<% "date" + i %>" > <%= (i+1) + ") " + formattedDate + " at " + time[i] %> </label>
+            <input type="checkbox" class="checkmark" id="<% "date" + i %>" name="<% "date" + i %>" value="<%[sqlDate,time[i]]%>">
+            <br>
+        <% }%>
+            <br>
+            <input class="edit-button" style="color: #f23c48" type="submit" value="CANCEL RESERVATIONS" />
+    </form>
+
+    <br>
+    <br>
 </div>
 
 

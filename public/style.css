@@ -30,7 +30,7 @@ h3 {
     font-style: normal;
     color: #F5A4CF;
     text-decoration: underline;
-    font-size: 3.5vw;
+    font-size: 4.5vh;
 }
 
 p{
@@ -156,9 +156,9 @@ p{
     background-color: #221F1F;
     border: none;
     color:#CF8E8E;
-    padding: 2vw 5vw;
+    padding: 1vw 4vw;
     text-align: center;
-    font-size: 3vw;
+    font-size: 2vw;
     font-family: quantico;
     opacity: 1;
     transition: 0.3s;
@@ -183,7 +183,7 @@ p{
 
 .contact-form{
     width:30vw;
-    padding:1vw;
+    padding:1vh;
     font-family: "Ariel", sans-serif;
     font-size:1.5vw;
     background-color: #0C0C0C;
@@ -211,10 +211,23 @@ p{
     border-radius: 1vw;
 }
 
+cancel-form{
+    color:white;
+
+}
+
 label{
     font-size:2.5vw;
     font-family: "Rationale", sans-serif;
     padding:0.5vw;
+    color: white;
+}
+
+.checkmark {
+    height: 2vw;
+    width: 2vw;
+    padding: 2vw;
+    background-color: white;
 }
 
 .normal{
@@ -236,6 +249,7 @@ label{
   overflow: hidden;
     background-color: black;
     height: 6vw;
+
 }
 
 .topnav a {
@@ -260,6 +274,24 @@ label{
     padding-left: 1vw;
     width: 19vw;
 }
+
+/* side by side divs*/
+.flex-container {
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+}
+
+.flex-child {
+    text-align: center;
+    display: grid;
+}
+
+.hidden-hr{
+    display: block;
+    width: 100%;
+}
+
 }
 
 .alert {
@@ -371,9 +403,13 @@ div.content {
 }
 .flex-child {
     flex: 1;
-    height: 50rem;
+    height: 50%;
     text-align: center;
 }
 .flex-child:first-child {
     margin-right: 1px;
+}
+
+.hidden-hr{
+    display: none;
 }
