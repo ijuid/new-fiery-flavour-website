@@ -1,5 +1,12 @@
 <%- include("sidebar") -%>
 </div>
 
+<% for (i=0;i<date.length; i++){%>
+    <% let sqlDate = date[i]; %>
+    <% let parts = sqlDate.split('-'); %>
+    <% let formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`; %>
+
+    <p> <%= (i+1) + ") " + formattedDate + " at " + time[i] %> </p>
+<% }%>
 </body>
 </html>

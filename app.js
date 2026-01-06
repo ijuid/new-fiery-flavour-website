@@ -14,7 +14,6 @@ app.set("view engine", "ejs");
 //serves static files from the public directory
 app.use(express.static("public"));
 
-
 const port = process.env.PORT || 3000;
 
 //mysql driver
@@ -125,6 +124,8 @@ app.post("/sign-in", (req, res) => {
             if(data.length > 0){
                 //for loop and concat all the booking dates and times into 1 value!!
                 var fullDate = "";
+                var dateArr = []
+                var timeArr = []
                 for (let i =0; i<data.length; i++){
                    if(data[i] == null){
                        break;
@@ -133,14 +134,18 @@ app.post("/sign-in", (req, res) => {
                        let parts = sqlDate.split('-');
                        let formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
                        fullDate += (i+1) + ") " + formattedDate + " at " + data[i].bookingTime + " with a party size of: " + data[i].partySize +'<br>' ;
+
+                      dateArr.push(data[i].bookingDate);
+                      timeArr.push(data[i].bookingTime);
                    }
+
                 }
                 req.session.userData = {
                     fullName: data[0].name,
                     theEmail: req.body.email,
-                    date: data[0].bookingDate,
-                    time: data[0].bookingTime,
-                    fullDate1: fullDate
+                    date: /*data[0].bookingDate,*/ dateArr,
+                    time: /*data[0].bookingTime,*/ timeArr,
+                    fullDate1: fullDate //LEAVE IT FOR NOW
                 };
                 req.session.sessOldEmail = req.body.email
                 return res.redirect("/results");
@@ -206,6 +211,18 @@ app.post("/change", (req, res) => {
     }
 });
 
+function dataCollector(userData) {
+    var items = {
+        fullName: userData.fullName,
+        theEmail: userData.theEmail,
+        date: userData.date,
+        time: userData.time,
+        fullDate1: userData.fullDate1
+    }
+    return items;
+}
+
+
 
 //route handlers to render pages
 app.get("/", (req, res) => {
@@ -225,31 +242,17 @@ app.get("/results", (req, res) => {
         return res.render("log-in");
     }
     const userData = req.session.userData;
-    const items = {
-        fullName: userData.fullName,
-        theEmail: userData.theEmail,
-        date: userData.date,
-        time: userData.time,
-        fullDate1: userData.fullDate1
-    }
-
-    res.render("results", items)
+    res.render("results", dataCollector(userData))
 });
 
 app.get("/email-change", (req, res) => {
     const userData = req.session.userData;
-    const items = {
-        fullName: userData.fullName,
-        theEmail: userData.theEmail,
-        date: userData.date,
-        time: userData.time,
-        fullDate1: userData.fullDate1
-    }
-    res.render("email-change", items);
+    res.render("email-change", dataCollector(userData));
 });
 
 app.get("/manage-bookings", (req, res) => {
-    res.render("manage-bookings");
+    const userData = req.session.userData;
+    res.render("manage-bookings", dataCollector(userData));
 });
 
 //starts express server
