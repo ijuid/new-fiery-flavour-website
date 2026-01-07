@@ -12,7 +12,7 @@ h1 {
     font-family: "Rationale", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 6vw;
+    font-size: 3.3rem;
     color: #CD5C5C;
 }
 
@@ -20,7 +20,7 @@ h2 {
     font-family: quantico;
     font-weight: 400;
     font-style: normal;
-    font-size: 2vw;
+    font-size: 2vh;
     color: #EA663E;
 }
 
@@ -37,7 +37,7 @@ p{
     font-family: "Rationale", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 2.5vw;
+    font-size: 2.5vh;
     color: white;
 }
 
@@ -126,9 +126,9 @@ p{
 
 .booking-center{
   margin: auto;
-  width: 50%;
+  width: 30vh;
   border: 1px solid white;
-  padding: 10vw;
+  padding: 10vh;
   background-color:black;
   text-align:center;
 }
@@ -137,9 +137,9 @@ p{
   background-color: #221F1F;
   border: none;
   color: #EA663E;
-  padding: 4vw 4vw;
+  padding: 4vh 4vh;
   text-align: center;
-  font-size: 3vw;
+  font-size: 3vh;
   font-family: quantico;
   opacity: 1;
   transition: 0.3s;
@@ -173,51 +173,54 @@ p{
 
 
 .contact-message {
-    height:20vw;
-    width:50vw;
-    font-size:2vw;
+    height:20vh;
+    width:50vh;
+    font-size:1.5vh;
     font-family: "Ariel", sans-serif;
     background-color: #0C0C0C;
     color:white;
 }
 
 .contact-form{
-    width:30vw;
+    width:30vh;
     padding:1vh;
     font-family: "Ariel", sans-serif;
-    font-size:1.5vw;
+    font-size:1.5vh;
     background-color: #0C0C0C;
     color:white;
 }
 
 .table-form{
-    width:30vw;
-    padding:1vw;
+    width:40vh;
+    padding:1.3vh;
     font-family: "Ariel", sans-serif;
-    font-size:1.5vw;
+    font-size:1.7vh;
     background-color: black;
     color:white;
 }
 .table {
-    padding: 1vw;
+    padding: 1vh;
     background-color: black;
     border: 0.4vw solid grey;
-    width: 49%;
+    width: 50%;
     position: absolute;
     top: 50%;
     left: 35%;
     transform: translate(-50%, -50%);
     opacity: 0.9;
-    border-radius: 1vw;
+    border-radius: 1vh;
 }
 
 cancel-form{
     color:white;
+}
+
+cancel-button{
 
 }
 
 label{
-    font-size:2.5vw;
+    font-size:2.5vh;
     font-family: "Rationale", sans-serif;
     padding:0.5vw;
     color: white;
@@ -293,6 +296,23 @@ label{
 }
 
 }
+/*finished max-width
+*/
+@media (max-width: 630px) {
+    .table {
+        padding: 1vh;
+        background-color: black;
+        border: 0.4vw solid grey;
+        width: 70%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.9;
+        border-radius: 1vh;
+    }
+}
+
 
 .alert {
     padding: 1vw;
