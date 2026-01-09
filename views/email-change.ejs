@@ -14,7 +14,7 @@
     <div class="flex-child">
         <h3>Change Name</h3>
         <div style="justify-content: center; align-content: center; display: flex">
-            <form action = "/name" method="POST" class="table-form">
+            <form action = "/name-change" method="POST" class="table-form">
                 <label for="fname"> Full Name: </label>
                 <input class="contact-form" type="text" id="fname" name="fname" value="<%= fullName %>" required />
                 <br><br>
@@ -30,7 +30,7 @@
         <div style="justify-content: center; align-content: center; display: flex">
             <form action = "/change" method="POST" class="table-form">
                 <label for="oldEmail"> Current Email: </label>
-                <input class="contact-form" type="email" id="oldEmail" name="oldEmail" value="<%= theEmail %>" disabled />
+                <input class="contact-form" style="color: #a09f9f" type="email" id="oldEmail" name="oldEmail" value="<%= theEmail %>" disabled />
                 <br><br>
                 <label for="newEmail"> New Email: </label>
                 <input class="contact-form" type="email" id="newEmail" name="newEmail" required /> <br>

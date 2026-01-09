@@ -186,12 +186,8 @@ app.post("/change", (req, res) => {
     const sql3 = "UPDATE reservation SET email = ? WHERE email= ?";
     let arr=[
         req.body.newEmail,
-        req.body.oldEmail
-    ]
-    if (req.body.oldEmail !== req.session.sessOldEmail){
-        res.render("email-change", {invalid: 'Invalid Email'});
-    }
-    else {
+        req.session.sessOldEmail
+    ];
         pool.getConnection(function (err, con) {
             if (err) {
                 return res.json(err);
@@ -200,15 +196,11 @@ app.post("/change", (req, res) => {
                 con.release();
                 if (err) {
                     return res.json(err);
-                } else if (data.affectedRows === 0) {
-                    res.render("email-change", {invalid: 'Invalid Email'});
-                } else {
-                    res.render("change-successful");
+                }else {
+                    return res.redirect("change-successful");
                 }
             });
-
         });
-    }
 });
 
 function dataCollector(userData) {
@@ -249,9 +241,8 @@ app.get("/email-change", (req, res) => {
     res.render("email-change", dataCollector(userData));
 });
 
-app.get("/manage-bookings", (req, res) => {
-    const userData = req.session.userData;
-    res.render("manage-bookings", dataCollector(userData));
+app.get("/change-successful", (req, res) => {
+    res.render("change-successful");
 });
 
 //starts express server

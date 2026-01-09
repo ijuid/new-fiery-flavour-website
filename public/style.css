@@ -227,9 +227,9 @@ label{
 }
 
 .checkmark {
-    height: 2vw;
-    width: 2vw;
-    padding: 2vw;
+    height: 2vh;
+    width: 2vh;
+    padding: 2vh;
     background-color: white;
 }
 
