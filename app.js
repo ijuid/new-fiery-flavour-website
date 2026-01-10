@@ -19,7 +19,7 @@ const port = process.env.PORT || 3000;
 //mysql driver
 const mysql = require("mysql");
 const http = require("http");
-const {it} = require("node:test");
+const {it, todo} = require("node:test");
 
 //creates a basic http server
 const server = http.createServer(function (req, res) {
@@ -158,24 +158,35 @@ app.post("/sign-in", (req, res) => {
 });
 
 app.post("/delete", (req, res) => {
-    const sql2 = "DELETE FROM reservation WHERE email = ?";
-    //THIS WONT WORK! MUST MAKE NEW VIEWS FILE FOR DELETING, WILL ALLOW CHOOSING EACH RESERVATION
-    //if (req.body.email !== req.session.sessOldEmail){
-      //  res.render("results", {invalid: 'Invalid old email'});
-    //}
+    const sql2 = "SELECT * FROM reservation WHERE email = ?"; //@TODO REUSE FROM SQL1!!!!
     pool.getConnection(function (err, con) {
         if (err) {
             return res.json(err);
         }
-        con.query(sql2, req.body.email, (err, data) => {
-            con.release();
+        con.query(sql2, (err, data) => {
+            //con.release();
             if (err) {
                 res.render("invalid-email");
-            }else if(data.affectedRows===0){
+            }
+            let deleteSql = "DELETE * FROM reservation WHERE email = ? AND bookingDate = ? AND bookingTime = ?";
+            for(let i=0; i<10; i++){  //data.length?
+                if (req.body.date + i){
+                    var details = [req.session.sessOldEmail, req.body.date + i [0], req.body.date + i [1]];
+                    con.query(deleteSql, details, (err, data) => {
+//                        if (err) {
+  //                          res.render("invalid-email");
+    //                    }
+                    });
+
+                }
+            }
+            con.release();
+            return res.redirect("deletion");
+            /*else if(data.affectedRows===0){
                     res.render("invalid-email");
             }else {
                 res.render("deletion");
-            }
+            }*/
         });
     });
 
@@ -202,6 +213,28 @@ app.post("/change", (req, res) => {
             });
         });
 });
+
+//@TODO
+app.post("/name-change", (req, res) => {
+    const sql4 = "UPDATE reservation SET name = ? WHERE name= ?";
+    pool.getConnection(function (err, con) {
+        if (err) {
+            return res.json(err);
+        }
+        const arr = [req.fname, req.session.fullName];
+        con.query(sql4, arr, (err, data) => {
+            con.release();
+            if (err) {
+                return res.json(err);
+            }else {
+                req.session.fullName = data[0].name;
+                return res.redirect("change-successful");  //DOESNT WORK
+            }
+        });
+    });
+});
+
+
 
 function dataCollector(userData) {
     var items = {
@@ -242,6 +275,10 @@ app.get("/email-change", (req, res) => {
 });
 
 app.get("/change-successful", (req, res) => {
+    res.render("change-successful");
+});
+
+app.get("/deletion", (req, res) => {
     res.render("change-successful");
 });
 
